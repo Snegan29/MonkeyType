@@ -17,7 +17,7 @@ export function useTypingTest() {
   const [wpm, setWpm] = useState(0);
   
   useEffect(() => {
-    setWords(generateWords(100));
+    setWords(generateWords(200));
   }, []);
   
   useEffect(() => {
@@ -55,7 +55,6 @@ export function useTypingTest() {
     setCorrectWords(0);
     setIncorrectWords(0);
     setTestComplete(false);
-    setWords(generateWords(200));
   };
   
   const endTest = () => {
@@ -82,7 +81,7 @@ export function useTypingTest() {
       startTest();
     }
     
-    if (isActive) {
+    if (isActive || (!isActive && inputValue.length === 1)) {
       setInput(inputValue);
       
       if (inputValue.endsWith(' ')) {
